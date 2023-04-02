@@ -1,0 +1,21 @@
+package com.Program.Practice;
+
+public class LocalVariables {
+	
+	public static void Details()
+	{
+		String test ="selenium";
+		double price=3000.00;
+		int quantity = 3 ;
+	}
+
+	public static void main(String[] args) {
+
+		
+     System.out.println("Execution started");
+     Details();
+     System.out.println("Execution ended");
+
+	}
+
+}

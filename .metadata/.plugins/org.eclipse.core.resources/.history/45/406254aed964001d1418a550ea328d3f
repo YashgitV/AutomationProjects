@@ -1,0 +1,26 @@
+import java.util.List;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class HandlingTheFrames {
+
+	public static void main(String[] args) throws InterruptedException {
+		
+		WebDriver driver;
+		
+		System.setProperty("webdriver.chrome.driver", "C:/Drivers/chromedriver.exe");
+	    driver = new ChromeDriver();
+	    driver.manage().window().maximize();
+	    Thread.sleep(3000);
+	    driver.get("https://www.automationtestinginsider.com/2019/08/textarea-textarea-element-defines-multi.html");
+        Thread.sleep(3000);
+        List<WebElement> web1 = driver.findElements(By.tagName("iframe")); //find the list web elements on a frame
+	    int totalframes = web1.size();
+	    System.out.println(totalframes);
+	    Thread.sleep(3000);
+	}
+
+}

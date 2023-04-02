@@ -1,0 +1,21 @@
+package com.selenium;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class Sample {
+
+	public static void main(String[] args) throws InterruptedException
+	{
+		System.setProperty("webdriver.chrome.driver","E:\\64bitAutomationSW\\chromedriver_win64\\chromedriver.exe");
+		ChromeDriver c=new ChromeDriver();
+		c.get("file:///C:/Users/yuva/Desktop/Untitled1.html");
+		WebElement rv1 = c.findElement(By.id("v"));
+		rv1.sendKeys("abc");
+		rv1.clear();
+		rv1.sendKeys("xyz");
+		
+}
+	
+} 

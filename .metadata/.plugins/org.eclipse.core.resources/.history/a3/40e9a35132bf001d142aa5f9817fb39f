@@ -1,0 +1,187 @@
+package com.restapi2;
+
+import org.json.JSONObject;
+import org.json.JSONTokener;
+import org.testng.annotations.Test;
+import static io.restassured.RestAssured.* ;
+import static io.restassured.matcher.RestAssuredMatchers.*;
+import static org.hamcrest.Matchers.*;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.util.HashMap;
+
+/*
+Different ways to create POST request body
+1.post request body using Hashmap
+2.post request body creation using Org.JSON
+3.post request body creation using POJO class
+4.post request body using external json file data
+*/
+
+public class DiffwaysToCreatePostRequestBody {
+	
+	//1.post request body using Hashmap
+	
+	//@Test(priority=1)
+	public void testpostusingHashmap()
+	{
+		HashMap data = new HashMap();
+		data.put("name","yaswanth kumar2");
+		data.put("location","Hyderabad");
+		data.put("phone","6766788667");
+		
+		String CourseArr[]= {"java","API"};
+		
+		data.put("Course",CourseArr);
+		
+		given()
+		.contentType("application/json")
+		.body(data)
+		
+		
+		.when()
+		.post("http://localhost:3000/students")
+		
+		.then()
+		.statusCode(201)
+		.body("name",equalTo("yaswanth kumar2"))
+		.body("location",equalTo("Hyderabad"))
+		.body("phone",equalTo("6766788667"))
+		.body("Course[0]",equalTo("java"))
+		.body("Course[1]",equalTo("API"))
+		.header("Content-Type","application/json; charset=utf-8")
+		.log().all();	
+		
+		
+	}
+	
+	//2.post request body using Org.JSON library
+	
+	//   	@Test(priority=1)
+			public void testpostusingJsonLibrary()
+			{
+				JSONObject data = new JSONObject();
+				
+				data.put("name","gireesh");
+				data.put("location","canada");
+				data.put("phone","1537398");
+				
+				String CourserArr[] = {"java","RestAPI"};
+				data.put("Courses",CourserArr);
+				
+				
+				given()
+				.contentType("application/json")
+				.body(data.toString())
+				
+				
+				.when()
+				.post("http://localhost:3000/students")
+				
+				.then()
+				.statusCode(201)
+				.body("name",equalTo("gireesh"))
+				.body("location",equalTo("canada"))
+				.body("phone",equalTo("1537398"))
+				.body("Courses[0]",equalTo("java"))
+				.body("Courses[1]",equalTo("RestAPI"))
+				.header("Content-Type","application/json; charset=utf-8")
+				.log().all();	
+				
+				
+			}
+			
+			
+			//3.post request body using POJO
+			
+			//@Test(priority=1)
+			public void testpostusingPOJO()
+			{
+
+				Pojo_PostRequest data = new Pojo_PostRequest();
+				
+				data.setName("ramu");
+				data.setLocation("ongole");
+				data.setPhone("91546667");
+				
+				String CourseArr[] = {"C++","jira"};
+				data.setCourses(CourseArr);
+			
+				
+				given()
+				.contentType("application/json")
+				.body(data)
+				
+				
+				.when()
+				.post("http://localhost:3000/students")
+				
+				.then()
+				.statusCode(201)
+				.body("name",equalTo("ramu"))
+				.body("location",equalTo("ongole"))
+				.body("phone",equalTo("91546667"))
+				.body("Courses[0]",equalTo("C++"))
+				.body("Courses[1]",equalTo("jira"))
+				.header("Content-Type","application/json; charset=utf-8")
+				.log().all();	
+				
+				
+			}
+			
+			//3.post request body using External Json File
+			
+			@Test(priority=1)
+			public void testpostusingExternalJosnFile() throws FileNotFoundException
+			{
+                 
+				File f1 = new File(".\\body.json");
+				
+				FileReader fr = new FileReader(f1);
+				
+				JSONTokener jt = new JSONTokener(fr);
+				
+				JSONObject data = new JSONObject(jt);
+				
+				
+			
+			
+				
+				given()
+				.contentType("application/json")
+				.body(data.toString())
+				
+				
+				.when()
+				.post("http://localhost:3000/students")
+				
+				.then()
+				.statusCode(201)
+				.body("name",equalTo("ravi"))
+				.body("location",equalTo("us"))
+				.body("phone",equalTo("676876566"))
+				.body("Courses[0]",equalTo("python"))
+				.body("Courses[1]",equalTo("Restapi"))
+				.header("Content-Type","application/json; charset=utf-8")
+				.log().all();	
+				
+				
+			}
+			
+			
+	//deleting student record
+	@Test(priority=2)
+	public void testDelete()
+	{
+		given()
+		
+		.when()
+		.delete("http://localhost:3000/students/4")
+		
+		.then()
+		.statusCode(200);	
+	
+	}
+}

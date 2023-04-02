@@ -1,0 +1,13 @@
+package gitServer;
+
+public class Test1 {
+
+	String name = "Never Give Up";
+	public static void main(String[] args)
+	{
+		System.out.println("main method started");
+		Test1 t1 = new Test1();
+		System.out.println("name="+t1.name);
+		System.out.println("main method ended");
+	}
+}

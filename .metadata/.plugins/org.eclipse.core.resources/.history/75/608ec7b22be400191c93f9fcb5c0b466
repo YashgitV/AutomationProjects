@@ -1,0 +1,23 @@
+package com.selenium;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class Sample {
+
+	public static void main(String[] args)
+	{
+		System.setProperty("webdriver.chrome.driver","E:\\64bitAutomationSW\\chromedriver_win64\\chromedriver.exe");
+		ChromeDriver c=new ChromeDriver();
+		c.get("file:///C:/Users/yuva/Desktop/Untitled1.html");
+		c.findElement(By.id("v")).sendKeys("yash");
+		c.findElement(By.name("pass")).sendKeys("143");
+		c.findElement(By.id("s")).click();
+		c.findElement(By.className("male")).click();
+		c.findElement(By.id("l")).click();
+		c.findElement(By.linkText("ACTITIME")).click();
+		
+		
+}
+	
+}

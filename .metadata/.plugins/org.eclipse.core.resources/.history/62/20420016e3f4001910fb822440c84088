@@ -1,0 +1,19 @@
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
+
+public class Naukri {
+
+	public static void main(String[] args) {
+		System.setProperty("webdriver.chrome.driver","C://Drivers//chromedriver.exe" );
+		ChromeDriver k1=new ChromeDriver();
+		k1.get("https://www.Naukri.com");
+WebElement h1=k1.findElement(By.name("LOGIN"));
+Actions a1=new Actions(k1);
+a1.moveToElement(h1).perform();;
+		
+
+	}
+
+}

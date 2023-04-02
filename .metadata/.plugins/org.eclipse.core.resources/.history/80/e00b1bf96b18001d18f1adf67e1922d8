@@ -1,0 +1,48 @@
+package com.selenium.extentreport;
+
+import java.awt.Desktop;
+import java.io.File;
+import java.io.IOException;
+
+import com.aventstack.extentreports.ExtentReports;
+import com.aventstack.extentreports.ExtentTest;
+import com.aventstack.extentreports.Status;
+import com.aventstack.extentreports.reporter.ExtentSparkReporter;
+
+public class TestExtentreport3 {
+
+	public static void main(String[] args) throws Exception
+	{
+	
+		 ExtentReports extentreports = new ExtentReports();
+		 //if we want to use file instatnce in extentsparkreporter we need to create file instance
+		 File f1 = new File("report.html");
+		 ExtentSparkReporter sparkReporter = new ExtentSparkReporter(f1);
+		 extentreports.attachReporter(sparkReporter);
+		 
+		//Test case1 ---(method chaining process.. i.e,we can directly call the log methods)
+	     extentreports.createTest("Test1") //even though if we add all logs in one line we won't get any issues but readability is not there
+	     .log(Status.INFO,"info1")
+	     .log(Status.INFO, "info2")
+	     .log(Status.PASS, "pass")
+	     .log(Status.WARNING, "warning")
+	     .log(Status.WARNING, "warning")
+	     .log(Status.INFO, "info2")
+	     .log(Status.SKIP, "skip")
+	     .log(Status.FAIL, "fail1")
+	     .log(Status.FAIL, "fail2");
+	     
+		
+		 
+		
+		 
+		 
+		 
+		//if we don't mention the flush() method at the end.report is not getting generate
+		 extentreports.flush();
+		 Desktop.getDesktop().browse(new File("report.html").toURI()); //if we want to open any type of the file(i.e report) directly in default browser
+		 
+}
+	
+}
+

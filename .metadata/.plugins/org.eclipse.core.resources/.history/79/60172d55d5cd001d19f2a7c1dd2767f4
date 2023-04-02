@@ -1,0 +1,45 @@
+package com.selenium.work;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class Calendar {
+
+	public static void main(String[] args) throws InterruptedException {
+
+		WebDriver driver;
+		System.setProperty("webdriver.chrome.driver","C:/Drivers/Chromedriver.exe");
+		driver = new ChromeDriver();
+		driver.manage().window().maximize();
+		 driver.get("https://jqueryui.com/datepicker/");
+		Thread.sleep(5000);
+		WebElement fr1 = driver.findElement(By.xpath("//iframe[@class='demo-frame']"));
+		driver.switchTo().frame(fr1);
+		Thread.sleep(5000);
+	     WebElement datebox = driver.findElement(By.xpath("//input[@id='datepicker']"));
+		datebox.click();
+		Thread.sleep(5000);
+		datebox.sendKeys("29/03/2023");
+		Thread.sleep(5000);
+		
+		//String setdatestr = "29/03/2023";
+		
+		//String currentdatestr = driver.findElement(By.xpath("//div[@class='ui-datepicker-title']")).getText();
+
+/*
+	driver.get("https://demo.guru99.com/test/");
+		Thread.sleep(4000);
+		 WebElement dateBox = driver.findElement(By.xpath("//form//input[@name='bdaytime']"));
+
+	        //Fill date as mm/dd/yyyy as 09/25/2013
+
+	        dateBox.sendKeys("09292023");
+		*/
+	}
+
+}

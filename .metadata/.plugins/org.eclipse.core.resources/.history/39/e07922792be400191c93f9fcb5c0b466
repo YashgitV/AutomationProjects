@@ -1,0 +1,16 @@
+package com.selenium;
+
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class Sample {
+
+	public static void main(String[] args)
+	{
+		System.setProperty("webdriver.chrome.driver","E:\\64bitAutomationSW\\chromedriver_win64\\chromedriver.exe");
+		ChromeDriver c=new ChromeDriver();
+		c.get("file:///C:/Users/yuva/Desktop/Untitled1.html");
+		
+		
+}
+	
+}

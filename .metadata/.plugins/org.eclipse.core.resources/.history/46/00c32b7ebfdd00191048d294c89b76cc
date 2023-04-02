@@ -1,0 +1,16 @@
+package com.selenium;
+
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class Sample {
+
+	public static void main(String[] args)
+	{
+		System.setProperty("webdriver.chrome.driver","E:\\64bitAutomationSW\\chromedriver_win64\\chromedriver.exe");
+		ChromeDriver cc=new ChromeDriver();
+		cc.get("http://www.facebook.com");
+		cc.get("http://www.paytm.com");
+		cc.get("http://www.nobroker.com");
+	    //cc.get("http://www.flipkart.com");
+}
+}

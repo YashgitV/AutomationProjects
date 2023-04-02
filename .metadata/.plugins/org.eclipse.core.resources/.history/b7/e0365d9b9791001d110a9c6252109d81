@@ -1,0 +1,24 @@
+package com.selenium.work;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class FindElementvsFindElements {
+
+	public static void main(String[] args) throws InterruptedException {
+		
+		WebDriver driver;
+		System.setProperty("webdriver.chrome.driver","C:/Drivers/Chromedriver.exe");
+		driver = new ChromeDriver();
+		driver.manage().window().maximize();
+		driver.get("https://demo.nopcommerce.com/");
+		Thread.sleep(3000);
+		
+		WebElement web1 = driver.findElement(By.xpath("//input[@type='text']"));
+		web1.sendKeys("Iphone");
+
+	}
+
+}

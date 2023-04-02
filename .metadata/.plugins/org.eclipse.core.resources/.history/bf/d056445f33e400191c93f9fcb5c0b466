@@ -1,0 +1,32 @@
+package com.selenium;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class Sample {
+
+	public static void main(String[] args) throws InterruptedException
+	{
+		System.setProperty("webdriver.chrome.driver","E:\\64bitAutomationSW\\chromedriver_win64\\chromedriver.exe");
+		ChromeDriver c=new ChromeDriver();
+		c.get("file:///C:/Users/yuva/Desktop/Untitled1.html");
+		c.manage().window().maximize();
+		c.findElement(By.id("v")).sendKeys("yash");
+		c.findElement(By.name("pass")).sendKeys("143");
+		Thread.sleep(1000);
+		c.findElement(By.id("s")).click();
+		c.findElement(By.className("male")).click();
+		c.findElement(By.id("l")).click();
+		c.findElement(By.linkText("ACTITIME")).click();
+		Thread.sleep(1000);
+		c.findElement(By.name("username")).sendKeys("admin");
+		c.findElement(By.name("pwd")).sendKeys("manager");
+		Thread.sleep(1000);
+		c.findElement(By.cssSelector("body > form > table > tbody > tr:nth-child(1) > td > table > tbody > tr > td > table.bordered > tbody > tr:nth-child(4) > td > table > tbody > tr:nth-child(6) > td:nth-child(2) > input[type=submit]")).click();
+		Thread.sleep(1000);
+		c.close();
+		
+		
+}
+	
+}

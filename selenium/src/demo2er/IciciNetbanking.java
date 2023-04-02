@@ -1,0 +1,20 @@
+package demo2er;
+
+import java.util.concurrent.TimeUnit;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.Select;
+
+public class IciciNetbanking {
+
+	public static void main(String[] args) {
+		System.setProperty("webdriver.chrome.driver","C://Drivers//chromedriver.exe" );
+		ChromeDriver f2=new ChromeDriver();
+		f2.manage().timeouts().implicitlyWait(30,TimeUnit.SECONDS);
+       f2.get("https://www.google.com/search?q=icicinetbanking&oq=icicinetbanking&aqs=chrome..69i57j0l7.8894j0j7&sourceid=chrome&ie=UTF-8");
+       f2.findElement(By.className("S3Uucc")).click();
+       f2.findElement(By.className("pl-login-ornage-box")).click();
+	}
+
+}

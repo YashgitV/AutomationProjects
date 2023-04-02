@@ -1,0 +1,28 @@
+package com.restapi3;
+
+import org.testng.annotations.Test;
+import static io.restassured.RestAssured.* ;
+import static io.restassured.matcher.RestAssuredMatchers.*;
+import static org.hamcrest.Matchers.*;
+
+public class HeadersDemo {
+
+	
+	@Test(priority=1)
+	void testHeaders()
+	{
+		given()
+		
+		.when()
+		.get("https://google.com/")
+		
+		.then()
+		.header("Content-Type","text/html; charset=ISO-8859-1")
+		.and()
+		.header("Content-Encoding","gzip")
+		.and()
+		.header("Server", "gws")
+		.log().all();
+		
+	}
+}
